@@ -1,0 +1,368 @@
+@keyframes glow {
+  from,
+  0% {
+    border-color: transparent;
+  }
+  50% {
+    border-color: black;
+  }
+  to,
+  100% {
+    border-color: transparent;
+  }
+}
+
+html {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  padding-inline: 150px;
+  align-items: center;
+  background-color: black;
+
+  .logo-wrapper {
+    a {
+      text-decoration: none;
+      color: white;
+    }
+  }
+
+  .search-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .lucide-search {
+      position: absolute;
+      z-index: 1;
+      left: 5px;
+      top: 2px;
+      opacity: 0.5;
+    }
+
+    .lucide-circle-x {
+      position: absolute;
+      right: 5px;
+      top: 2px;
+      cursor: pointer;
+      opacity: 0.5;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    #search {
+      font-size: 15px;
+      border-radius: 15px;
+      border: none;
+      padding: 5px 20px;
+      transition: 0.3s all;
+      width: 200px;
+      padding-left: 30px;
+
+      &:focus {
+        width: 280px;
+      }
+    }
+  }
+
+  .login-wrapper {
+    button {
+      font-size: 15px;
+      border: 1px solid white;
+      border-radius: 15px;
+      background-color: transparent;
+      color: white;
+      cursor: pointer;
+      padding: 5px 20px;
+      transition: 0.5s all;
+
+      &:hover {
+        background-color: white;
+        color: black;
+      }
+    }
+  }
+}
+
+.mainAnimation {
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 450px;
+  position: relative;
+
+  .textWrapper {
+    border-right: 1px solid black;
+    animation: 1s glow step-end infinite;
+
+    h1 {
+      margin: 0;
+    }
+  }
+}
+
+.bodyImageWrapper {
+  width: 100%;
+  height: auto;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  img {
+    object-fit: cover;
+    width: 70%;
+    height: 100%;
+  }
+
+  .watchInfoWrapper {
+    position: absolute;
+    color: white;
+    top: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    button {
+      font-size: 15px;
+      padding: 5px 20px;
+      background-color: transparent;
+      border: 1px solid white;
+      border-radius: 15px;
+      color: white;
+      cursor: pointer;
+      transition: all 0.5s;
+
+      &:hover {
+        background-color: white;
+        color: black;
+      }
+    }
+  }
+}
+
+.mountains {
+  position: absolute;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+
+  img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    top: 10px;
+  }
+}
+
+.categories {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-block: 50px;
+
+  .categoriesImages {
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-block: 50px;
+
+    a {
+      text-decoration: none;
+      color: black;
+    }
+
+    .item {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+
+      img {
+        cursor: pointer;
+      }
+
+      p {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+footer {
+  width: 100%;
+  background-color: black;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+
+  .linksWrapper {
+    grid-column-start: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 15px;
+
+    ul {
+      list-style: none;
+      color: white;
+
+      li {
+        a {
+          color: white;
+          text-decoration: none;
+        }
+      }
+    }
+
+    #icons {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-evenly;
+
+      li {
+        margin-right: 10px;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.notFound {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-size: 30px;
+
+  .prefix {
+    border-right: 1px solid black;
+    margin-right: 15px;
+    padding-right: 15px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+
+    p {
+      margin: 0;
+    }
+
+    .error-text {
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+
+.loginForm {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .loginWrapper {
+    display: flex;
+    flex-direction: column;
+    border: none;
+    box-shadow: 0 0 20px rgb(227, 227, 227);
+    border-radius: 15px;
+    padding: 20px;
+    align-items: center;
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      input {
+        font-size: 15px;
+        border-radius: 15px;
+        border: 1px solid rgb(227, 227, 227);
+        padding: 5px 20px;
+      }
+
+      input[type="submit"] {
+        background-color: transparent;
+        transition: 0.5s all;
+      }
+
+      #notCheked {
+        margin: 0;
+        color: red;
+      }
+    }
+  }
+}
+
+.registerForm {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .registerWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgb(227, 227, 227);
+    padding: 20px;
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      input {
+        font-size: 15px;
+        padding: 5px 20px;
+        border-radius: 15px;
+        border: 1px solid rgb(227, 227, 227);
+      }
+
+      input[type="submit"] {
+        background-color: transparent;
+        transition: 0.5s all;
+      }
+
+      #notCheked {
+        margin: 0;
+        color: red;
+      }
+    }
+  }
+}
+
+#login,
+#register {
+  &:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+.special-header-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+
+  .logo-wrapper {
+    a {
+      text-decoration: none;
+      color: white;
+    }
+  }
+}
