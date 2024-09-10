@@ -23,7 +23,7 @@ function Body() {
           <Link to="/iPhones">
             <span className="item">
               <img src={iphone} alt="iphone" />
-              Iphone
+              <p>Iphone</p>
             </span>
           </Link>
           <Link to="/iPads">

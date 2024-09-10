@@ -13,6 +13,7 @@ import Applewatch from "./pages/Applewatches";
 
 import { Route, Routes } from "react-router-dom";
 import Profile from "./pages/Profile";
+import ProductPage from "./components/Product-page/Product";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path="/macs" element={<Mac></Mac>}></Route>
         <Route path="/applewatches" element={<Applewatch></Applewatch>}></Route>
         <Route path="/profile" element={<Profile></Profile>}></Route>
+        <Route path="/product" element={<ProductPage></ProductPage>}></Route>
       </Routes>
       <Footer></Footer>
     </>

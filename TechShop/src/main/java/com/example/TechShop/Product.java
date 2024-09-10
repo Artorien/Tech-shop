@@ -8,37 +8,43 @@ import jakarta.persistence.Table;
 @Table(name = "products")
 public class Product {
     @Id
-    private Integer id;
+    private int id;
     private String name;
     private String color;
-    private Integer memory;
+    private int memory;
     private String model;
     private String processor;
+    private String image;
+    private int price;
 
     public Product() {
 
     }
 
     public Product(
-            Integer id,
+            int id,
             String name,
             String color,
-            Integer memory,
+            int memory,
             String model,
-            String processor) {
+            String processor,
+            String image,
+            int price) {
         this.id = id;
         this.name = name;
         this.color = color;
         this.memory = memory;
         this.model = model;
         this.processor = processor;
+        this.image = image;
+        this.price = price;
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -58,11 +64,11 @@ public class Product {
         this.color = color;
     }
 
-    public Integer getMemory() {
+    public int getMemory() {
         return memory;
     }
 
-    public void setMemory(Integer memory) {
+    public void setMemory(int memory) {
         this.memory = memory;
     }
 
@@ -80,5 +86,25 @@ public class Product {
 
     public void setProcessor(String processor) {
         this.processor = processor;
+    }
+
+    public String getImage()
+    {
+        return this.image;
+    }
+
+    public void setImage(String image)
+    {
+        this.image = image;
+    }
+
+    public int getPrice()
+    {
+        return this.price;
+    }
+
+    public void setPrice(int price)
+    {
+        this.price = price;
     }
 }
