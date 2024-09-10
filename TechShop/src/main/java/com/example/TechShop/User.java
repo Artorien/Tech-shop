@@ -9,6 +9,7 @@ import java.util.List;
 @Table(name = "users")
 public class User {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String email;
     private String password;
@@ -19,11 +20,7 @@ public class User {
 
     }
 
-    public User(
-            Integer id,
-            String email,
-            String password) {
-        this.id = id;
+    public User(String email, String password) {
         this.email = email;
         this.password = password;
         this.favouriteItems = new ArrayList<>();

@@ -4,7 +4,6 @@ import "./styles/style.scss";
 import Footer from "./components/Common-components/Footer";
 import Home from "./pages/Home";
 import Login from "./components/Login-page/Login";
-import Header from "./components/Common-components/Header";
 import Register from "./components/Register-page/Register";
 import NotFound from "./pages/NotFound";
 import Iphone from "./pages/Iphones";
@@ -27,13 +26,7 @@ function App() {
         <Route path="/iPads" element={<Ipad></Ipad>}></Route>
         <Route path="/macs" element={<Mac></Mac>}></Route>
         <Route path="/applewatches" element={<Applewatch></Applewatch>}></Route>
-        {/* <Route
-          path="/profile"
-          element={
-            <PrivateRoute>
-              <Profile></Profile>
-            </PrivateRoute>
-          }></Route> */}
+        <Route path="/profile" element={<Profile></Profile>}></Route>
       </Routes>
       <Footer></Footer>
     </>

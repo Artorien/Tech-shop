@@ -1,9 +1,10 @@
 import { useRef, useState } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SpecialHeader from "../Common-components/SpecialHeader";
 import { loginUser } from "../Services/Services";
 
 function Login() {
+  const navigate = useNavigate();
   const [isChecked, setIsCheked] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -18,11 +19,11 @@ function Login() {
 
     if (isChecked) {
       try {
-        const token = await loginUser({ email, password });
+        const token = await loginUser(email, password);
         localStorage.setItem("token", token);
-        // useNavigate("/profile");
+        navigate("/profile");
       } catch (error) {
-        setError(error);
+        setError(error.message);
       }
     }
   };
@@ -35,7 +36,7 @@ function Login() {
         <div className="loginWrapper">
           <h1>Log In</h1>
           <form onSubmit={handleSubmit}>
-            {error && <p>{error}</p>}
+            {error && <p id="error">{error}</p>}
             <input
               type="email"
               placeholder="Email"

@@ -1,11 +1,14 @@
 import { useState } from "react";
 import SpecialHeader from "../Common-components/SpecialHeader";
 import { register } from "../Services/Services";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
+  const navigate = useNavigate();
   const [isChecked, setIsCheked] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const handleCheck = (event) => {
     setIsCheked(event.target.checked);
@@ -15,7 +18,12 @@ function Register() {
     event.preventDefault();
 
     if (isChecked) {
-      await register();
+      try {
+        await register(email, password);
+        navigate("/login");
+      } catch(error) {
+        setError(error.message);
+      }
     }
   };
 
@@ -26,9 +34,9 @@ function Register() {
         <div className="registerWrapper">
           <h1>Register</h1>
           <form onSubmit={handleSubmit}>
-            <input type="email" required placeholder="Email" />
-            <input type="password" required placeholder="Password" />
-            <input type="passowrd" required placeholder="Password again" />
+            {error && (<p id="error">{error}</p>)}
+            <input type="email" required placeholder="Email" onChange={(event) => setEmail(event.target.value)} />
+            <input type="password" required placeholder="Password" onChange={(event) => setPassword(event.target.value)} />
             <div>
               <label htmlFor="checkBox">Agree to our terms</label>
               <input type="checkBox" onChange={handleCheck} />

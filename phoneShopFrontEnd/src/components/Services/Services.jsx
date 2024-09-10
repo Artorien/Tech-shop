@@ -1,31 +1,30 @@
-import { redirect, useNavigate } from "react-router-dom";
+const url = "http://localhost:8080/shop";
 
-const url = "bebra";
-
-export const loginUser = async (userInfo) => {
+export const loginUser = async (email, password) => {
   const response = await fetch(url + "/login", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(userInfo),
+    headers: { 
+      "Content-Type": "application/json" },
+    body: JSON.stringify({email: email, password: password}),
   });
 
+  console.log(response);
+
   if (response.ok) {
-    return response.text;
+    return response.text();
   } else if (!response.ok) {
-    throw new Error("Invalid credentials");
+    throw new Error(await response.text());
   }
 };
 
-export const register = async (userInfo) => {
-  const response = await fetch(url + "/register", {
+export const register = async (email, password) => {
+  const response = await fetch(url + "/registration", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(userInfo),
+    body: JSON.stringify({email: email, password: password}),
   });
 
-  if (response.ok) {
-    // useNavigate("/profile");
-  } else if (!response.ok) {
-    throw new Error("Something went wrong");
+  if (!response.ok) {
+    throw new Error(await response.text());
   }
 };

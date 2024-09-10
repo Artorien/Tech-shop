@@ -346,6 +346,20 @@ footer {
   }
 }
 
+#login, 
+#register {
+  font-size: 15px;
+  border-radius: 15px;
+  border: 1px solid rgb(227, 227, 227);
+  padding: 5px 20px;
+  background-color: transparent;
+}
+
+#error {
+  color: red;
+  text-align: center;
+}
+
 #login,
 #register {
   &:not(:disabled) {
