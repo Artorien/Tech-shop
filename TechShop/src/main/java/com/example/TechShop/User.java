@@ -15,6 +15,7 @@ public class User {
     private String password;
     @OneToMany
     private List<Product> favouriteItems;
+    private String token;
 
     public User() {
 
@@ -24,6 +25,7 @@ public class User {
         this.email = email;
         this.password = password;
         this.favouriteItems = new ArrayList<>();
+        this.token = "";
     }
 
     public Integer getId() {
@@ -56,5 +58,15 @@ public class User {
 
     public void setFavouriteItems(List<Product> favouriteItems) {
         this.favouriteItems = favouriteItems;
+    }
+
+    public String getToken()
+    {
+        return this.token;
+    }
+
+    public void setToken(String token)
+    {
+        this.token = token;
     }
 }

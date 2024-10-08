@@ -47,7 +47,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/shop/registration", "/shop/login", "/product/all").permitAll()
+                        .requestMatchers("/shop/registration", "/shop/login", "/product/all", "/product/category", "/shop/verify").permitAll()
                         .anyRequest().authenticated()
                 )
                 .logout((logout) -> logout

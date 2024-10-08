@@ -14,6 +14,7 @@ import Applewatch from "./pages/Applewatches";
 import { Route, Routes } from "react-router-dom";
 import Profile from "./pages/Profile";
 import ProductPage from "./components/Product-page/Product";
+import Verification from "./components/Register-page/Verification";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/register" element={<Register></Register>}></Route>
+        <Route path="/verify" element={<Verification></Verification>}></Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>
         <Route path="/iPhones" element={<Iphone></Iphone>}></Route>
         <Route path="/iPads" element={<Ipad></Ipad>}></Route>

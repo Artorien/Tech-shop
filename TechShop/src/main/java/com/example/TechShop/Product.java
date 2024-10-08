@@ -11,10 +11,12 @@ public class Product {
     private int id;
     private String name;
     private String color;
-    private int memory;
+    private String memory;
     private String model;
     private String processor;
     private String image;
+    private String diagonal;
+    private String productToken;
     private int price;
 
     public Product() {
@@ -25,10 +27,12 @@ public class Product {
             int id,
             String name,
             String color,
-            int memory,
+            String memory,
             String model,
             String processor,
             String image,
+            String diagonal,
+            String productToken,
             int price) {
         this.id = id;
         this.name = name;
@@ -37,6 +41,8 @@ public class Product {
         this.model = model;
         this.processor = processor;
         this.image = image;
+        this.diagonal = diagonal;
+        this.productToken = productToken;
         this.price = price;
     }
 
@@ -64,11 +70,11 @@ public class Product {
         this.color = color;
     }
 
-    public int getMemory() {
+    public String getMemory() {
         return memory;
     }
 
-    public void setMemory(int memory) {
+    public void setMemory(String memory) {
         this.memory = memory;
     }
 
@@ -98,6 +104,16 @@ public class Product {
         this.image = image;
     }
 
+    public String getDiagonal()
+    {
+        return this.diagonal;
+    }
+
+    public void setDiagonal(String diagonal)
+    {
+        this.diagonal = diagonal;
+    }
+
     public int getPrice()
     {
         return this.price;
@@ -106,5 +122,15 @@ public class Product {
     public void setPrice(int price)
     {
         this.price = price;
+    }
+
+    public String getProductToken()
+    {
+        return this.productToken;
+    }
+
+    public void setProductToken(String productToken)
+    {
+        this.productToken = productToken;
     }
 }

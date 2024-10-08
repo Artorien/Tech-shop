@@ -19,9 +19,9 @@ function Register() {
 
     if (isChecked) {
       try {
-        await register(email, password);
-        navigate("/login");
-      } catch(error) {
+        const response = await register(email, password);
+        alert(response);
+      } catch (error) {
         setError(error.message);
       }
     }
@@ -34,9 +34,19 @@ function Register() {
         <div className="registerWrapper">
           <h1>Register</h1>
           <form onSubmit={handleSubmit}>
-            {error && (<p id="error">{error}</p>)}
-            <input type="email" required placeholder="Email" onChange={(event) => setEmail(event.target.value)} />
-            <input type="password" required placeholder="Password" onChange={(event) => setPassword(event.target.value)} />
+            {error && <p id="error">{error}</p>}
+            <input
+              type="email"
+              required
+              placeholder="Email"
+              onChange={(event) => setEmail(event.target.value)}
+            />
+            <input
+              type="password"
+              required
+              placeholder="Password"
+              onChange={(event) => setPassword(event.target.value)}
+            />
             <div>
               <label htmlFor="checkBox">Agree to our terms</label>
               <input type="checkBox" onChange={handleCheck} />

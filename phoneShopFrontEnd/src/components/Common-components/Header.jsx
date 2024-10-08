@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 
 function Header() {
   const [value, setValue] = useState("");
+  function resetValue() {
+    setValue("");
+  }
 
   return (
     <div className="header-container">
@@ -19,10 +22,11 @@ function Header() {
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          className="lucide lucide-search">
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="lucide lucide-search"
+        >
           <circle cx="11" cy="11" r="8" />
           <path d="m21 21-4.3-4.3" />
         </svg>
@@ -35,17 +39,19 @@ function Header() {
         />
         {value && (
           <svg
+            style={{ zIndex: 1000 }}
             xmlns="http://www.w3.org/2000/svg"
             width="24"
             height="24"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            onClick={() => setValue("")}
-            className="lucide lucide-circle-x">
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            onClick={resetValue}
+            className="lucide lucide-circle-x"
+          >
             <circle cx="12" cy="12" r="10" />
             <path d="m15 9-6 6" />
             <path d="m9 9 6 6" />

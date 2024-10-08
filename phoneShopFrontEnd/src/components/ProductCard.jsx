@@ -1,18 +1,28 @@
 import { Link } from "react-router-dom";
-import iphone from "./images/iphone.png";
+import { useState, useEffect } from "react";
 
 function ProductCard(properties) {
-    return (
-        <div className="cardContainerIphone">
-            <Link to={"/product"}>
-                <img src={properties.image}></img>
-            </Link>
-            <h4>{properties.name}</h4>
-            <p>{properties.memory} GB</p>
-            <p id="price">{properties.price} €</p>
-            <Link className="buttonLink"><button>Buy</button></Link>
-        </div>
-    )
+  const [memory, setMemory] = useState("");
+
+  useEffect(() => {
+    properties.memory == 1024
+      ? setMemory("1 TB")
+      : setMemory(properties.memory + " GB");
+  }, [properties.memory]);
+
+  return (
+    <div className="cardContainerIphone">
+      <Link to={`/product?name=${properties.name.replace(/\s+/g, "")}}`}>
+        <img src={properties.image}></img>
+      </Link>
+      <h4>{properties.name}</h4>
+      {!properties.isAppleWatch && <p>{memory}</p>}
+      <p id="price">€ {properties.price},- </p>
+      <Link className="buttonLink">
+        <button>Buy</button>
+      </Link>
+    </div>
+  );
 }
 
 export default ProductCard;

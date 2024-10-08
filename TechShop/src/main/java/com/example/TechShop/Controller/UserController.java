@@ -10,13 +10,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/shop")
@@ -39,16 +40,20 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("User already exists");
         }
 
+        String token = userService.generateToken(user);
+        user.setToken(token);
+        System.out.println("User's new token: " + user.getToken());
         userService.saveUser(user);
+        userService.sendEmail(user, token);
 
-        return ResponseEntity.ok("User was created successfully");
+        return ResponseEntity.ok("User registered successfully, please check your email");
     }
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody User user) {
-        System.out.println("Password: " + user.getPassword());
-//        try {
-            System.out.println("Attempting authentication for user: " + user.getEmail());
+        if (user.getToken() == null)
+        {
+            SecurityContext contextHolder = SecurityContextHolder.createEmptyContext();
 
             Authentication authentication = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
@@ -57,21 +62,27 @@ public class UserController {
                     )
             );
 
-            System.out.println("Auth: " + authentication);
-            SecurityContextHolder.getContext().setAuthentication(authentication);
-            System.out.println("Auth2: " + authentication.getPrincipal());
-
+            contextHolder.setAuthentication(authentication);
+            SecurityContextHolder.setContext(contextHolder);
             UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-
-            System.out.println("Authentication successful for user: " + userDetails.getUsername());
-            System.out.println(userDetails.getUsername());
-            System.out.println(userDetails.getPassword());
-
             String jwt = jwtTokenFactory.generateToken(userDetails.getUsername());
-            System.out.println("bebra2");
+
             return ResponseEntity.ok(jwt);
-//        } catch (Exception e) {
-//            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Incorrect credentials");
-//        }
+        }
+
+        return ResponseEntity.status(HttpStatus.CONFLICT).body("User has not been verified");
+    }
+
+    @GetMapping("/verify")
+    public String verify(@RequestParam("token") String token) {
+        User user = userService.findByToken(token);
+
+        if (user != null) {
+            user.setToken(null);
+            userService.updateUser(user);
+            return "Email has been successfully verified";
+        }
+
+        return "Something went wrong";
     }
 }

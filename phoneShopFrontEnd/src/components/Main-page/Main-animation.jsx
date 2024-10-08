@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import mountains from "../images/mountains.png";
 
 function MainAnimation() {
   const baseText = "Best ";
@@ -25,9 +24,13 @@ function MainAnimation() {
         setTypingInterval(typingSpeed);
       } else if (isDeleting) {
         setTypingInterval(deletingSpeed);
-        setText(baseText + currentWord.substring(0, text.length - baseText.length - 1));
+        setText(
+          baseText + currentWord.substring(0, text.length - baseText.length - 1)
+        );
       } else if (!isDeleting) {
-        setText(baseText + currentWord.substring(0, text.length - baseText.length + 1));
+        setText(
+          baseText + currentWord.substring(0, text.length - baseText.length + 1)
+        );
       }
     };
 
@@ -42,7 +45,7 @@ function MainAnimation() {
         <h1>{text}</h1>
       </div>
       <div className="mountains">
-        <img src={mountains} alt="mountains" />
+        <img src="/images/mountains.png" alt="mountains" />
       </div>
     </>
   );

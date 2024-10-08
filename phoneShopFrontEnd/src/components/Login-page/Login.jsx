@@ -38,7 +38,7 @@ function Login() {
           <form onSubmit={handleSubmit}>
             {error && <p id="error">{error}</p>}
             <input
-              type="email"
+              type="text"
               placeholder="Email"
               onChange={(event) => setEmail(event.target.value)}
               required

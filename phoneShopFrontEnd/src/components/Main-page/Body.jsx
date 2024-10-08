@@ -1,8 +1,4 @@
-import watch from "../images/apple_watch_9.jpeg";
-import iphone from "../images/iphone.png";
-import ipad from "../images/ipad.png";
-import mac from "../images/mac.png";
-import applewatch from "../images/watch.png";
+
 import { Link } from "react-router-dom";
 
 function Body() {
@@ -15,32 +11,32 @@ function Body() {
             <button>Find out more</button>
           </Link>
         </div>
-        <img src={watch} alt="watch_logo" />
+        <img src="/images/apple_watch_9.jpeg" alt="watch_logo" />
       </div>
       <div className="categories">
         <h1>Categories</h1>
         <div className="categoriesImages">
           <Link to="/iPhones">
             <span className="item">
-              <img src={iphone} alt="iphone" />
-              <p>Iphone</p>
+              <img src="/images/iphone.png" alt="iphone" />
+              <p>iPhone</p>
             </span>
           </Link>
           <Link to="/iPads">
             <div className="item">
-              <img src={ipad} alt="ipad" />
+              <img src="/images/ipad.png" alt="ipad" />
               <p>iPad</p>
             </div>
           </Link>
           <Link to="/macs">
             <div className="item">
-              <img src={mac} alt="mac" />
+              <img src="/images/mac.png" alt="mac" />
               <p>Mac</p>
             </div>
           </Link>
           <Link to="/applewatches">
             <div className="item">
-              <img src={applewatch} alt="applewatch" />
+              <img src="/images/watch.png" alt="applewatch" />
               <p>Watch</p>
             </div>
           </Link>
